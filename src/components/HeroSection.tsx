@@ -83,7 +83,7 @@ export default function HeroSection() {
         <div className="relative inline-block mx-auto">
           <button
             type="button"
-            onClick={() => setZoomImage('/Fav.jpeg')}
+            onClick={() => setZoomImage('Fav.jpeg')}
             className="polaroid rotate-2 hover:rotate-0 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-lavender-dark focus:ring-offset-2"
             aria-label="Ver foto en tamaño completo"
           >
