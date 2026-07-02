@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import confetti from 'canvas-confetti';
 
 export default function HeroSection() {
@@ -35,6 +35,7 @@ export default function HeroSection() {
 
     return () => clearTimeout(timer);
   }, []);
+  const [zoomImage, setZoomImage] = useState<string | null>(null);
 
   return (
     <section className="relative flex flex-col items-center justify-center px-4 py-10 md:py-14 overflow-hidden">
@@ -80,18 +81,47 @@ export default function HeroSection() {
 
         {/* Photo placeholder */}
         <div className="relative inline-block mx-auto">
-          <div className="polaroid rotate-2 hover:rotate-0 transition-transform duration-300">
-            <div className="w-40 h-40 md:w-52 md:h-52 bg-gradient-to-br from-lavender-light to-mint-light rounded-sm flex items-center justify-center">
-              <div className="text-center">
-                <span className="text-4xl">📷</span>
-                <p className="text-xs text-muted-foreground mt-1 font-nunito">Tu foto favorita aquí</p>
-              </div>
+          <button
+            type="button"
+            onClick={() => setZoomImage('/Fav.jpeg')}
+            className="polaroid rotate-2 hover:rotate-0 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-lavender-dark focus:ring-offset-2"
+            aria-label="Ver foto en tamaño completo"
+          >
+            <div className="w-40 h-40 md:w-52 md:h-52 bg-gradient-to-br from-lavender-light to-mint-light rounded-sm flex items-center justify-center overflow-hidden">
+              <img
+                src="/Fav.jpeg"
+                alt="Foto favorita"
+                className="w-full h-full object-cover"
+              />
             </div>
-          </div>
+          </button>
           {/* Decorative tape */}
           <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-14 h-3 bg-pastelYellow opacity-80 rotate-[-2deg] rounded-sm" />
         </div>
       </div>
+      {/* Modal para el Zoom */}
+      {zoomImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200"
+          onClick={() => setZoomImage(null)}
+        >
+          <div className="relative max-w-full max-h-[90vh]" onClick={(event) => event.stopPropagation()}>
+            <img
+              src={zoomImage}
+              alt="Zoom"
+              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+            />
+            <button
+              type="button"
+              onClick={() => setZoomImage(null)}
+              className="absolute top-3 right-3 text-white text-3xl md:text-4xl font-bold leading-none bg-black/40 rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/60"
+              aria-label="Cerrar vista ampliada"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

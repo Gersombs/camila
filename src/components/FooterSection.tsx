@@ -39,7 +39,7 @@ export default function FooterSection() {
         </div>
 
         <p className="text-lg font-nunito text-foreground/70 mb-2">
-          Hecho con mucho amor para ti 💕
+          Hecho con mucho amor para ti de tu hermano 💕
         </p>
         <p className="text-sm font-nunito text-muted-foreground mb-6">
           Generación 2020 - 2026

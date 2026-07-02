@@ -2,23 +2,24 @@ import { useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const photos = [
-  { id: 1, caption: 'Primer día 🎒', rotation: 'rotate-[-3deg]' },
-  { id: 2, caption: 'Festival 🎭', rotation: 'rotate-[2deg]' },
-  { id: 3, caption: 'Día de campo 🌳', rotation: 'rotate-[-1deg]' },
-  { id: 4, caption: 'Con amigas 👯‍♀️', rotation: 'rotate-[3deg]' },
-  { id: 5, caption: 'Día del niño 🎈', rotation: 'rotate-[-2deg]' },
-  { id: 6, caption: 'Graduación 🎓', rotation: 'rotate-[1deg]' },
+  { id: 1, caption: 'Primer día 🎒', rotation: 'rotate-[-3deg]', image: '/Slide1.jpeg' },
+  { id: 2, caption: 'Cumpleaños 🎉', rotation: 'rotate-[2deg]', image: '/Slide2.jpeg' },
+  { id: 3, caption: 'Festival 🎈', rotation: 'rotate-[-1deg]', image: '/Slide3.jpeg' },
+  { id: 4, caption: 'Con Pimi 🐶', rotation: 'rotate-[3deg]', image: '/Slide4.jpeg' },
+  { id: 5, caption: 'Primera Comunión ✝️', rotation: 'rotate-[-2deg]', image: '/Slide5.jpeg' },
+  { id: 6, caption: 'Mi Pequeña 💝', rotation: 'rotate-[1deg]', image: '/Slide6.jpeg' },
 ];
 
 export default function GallerySection() {
   const { ref, isVisible } = useScrollAnimation();
   const [activeIndex, setActiveIndex] = useState(0);
+  const [zoomImage, setZoomImage] = useState<string | null>(null); // Estado para el zoom
 
   const nextSlide = () => setActiveIndex((prev) => (prev + 1) % photos.length);
   const prevSlide = () => setActiveIndex((prev) => (prev - 1 + photos.length) % photos.length);
 
   return (
-    <section className="py-12 px-4">
+    <section className="py-12 px-4 relative">
       <div className="max-w-4xl mx-auto">
         <div
           ref={ref}
@@ -42,9 +43,17 @@ export default function GallerySection() {
             ←
           </button>
 
-          <div className="polaroid ${photos[activeIndex].rotation} transition-all duration-500">
-            <div className="w-44 h-44 md:w-56 md:h-56 bg-gradient-to-br from-lavender-light via-mint-light to-pastelYellow-light rounded-sm flex items-center justify-center">
-              <span className="text-4xl">📷</span>
+          {/* Polaroid display con click para zoom */}
+          <div 
+            className={`polaroid ${photos[activeIndex].rotation} transition-all duration-500 cursor-pointer hover:opacity-90`}
+            onClick={() => setZoomImage(photos[activeIndex].image)}
+          >
+            <div className="w-44 h-44 md:w-56 md:h-56 bg-gray-200 rounded-sm overflow-hidden shadow-inner">
+              <img 
+                src={photos[activeIndex].image} 
+                alt={photos[activeIndex].caption}
+                className="w-full h-full object-cover"
+              />
             </div>
             <p className="text-center text-sm font-nunito text-foreground/70 mt-1 pb-1">
               {photos[activeIndex].caption}
@@ -84,13 +93,32 @@ export default function GallerySection() {
                 index === activeIndex ? 'ring-2 ring-lavender scale-105' : 'opacity-60 hover:opacity-100'
               }`}
             >
-              <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-lavender-light via-mint-light to-pastelYellow-light rounded-sm flex items-center justify-center">
-                <span className="text-base">📷</span>
+              <div className="w-12 h-12 md:w-14 md:h-14 bg-gray-200 rounded-sm overflow-hidden shadow-sm">
+                <img 
+                  src={photo.image} 
+                  alt={photo.caption}
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Modal para el Zoom */}
+      {zoomImage && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200"
+          onClick={() => setZoomImage(null)}
+        >
+          <img 
+            src={zoomImage} 
+            alt="Zoom" 
+            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+          />
+          <button className="absolute top-5 right-5 text-white text-4xl font-bold p-2">×</button>
+        </div>
+      )}
     </section>
   );
 }

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const grades = [
@@ -8,6 +9,7 @@ const grades = [
     emoji: '🎒',
     color: 'bg-lavender-light',
     borderColor: 'border-lavender',
+    image: '/Primero.jpeg',
   },
   {
     grade: '2do Grado',
@@ -16,6 +18,7 @@ const grades = [
     emoji: '📚',
     color: 'bg-mint-light',
     borderColor: 'border-mint',
+    image: '/Segundo.jpeg',
   },
   {
     grade: '3er Grado',
@@ -24,6 +27,7 @@ const grades = [
     emoji: '🎨',
     color: 'bg-pastelYellow-light',
     borderColor: 'border-pastelYellow',
+    image: '/Tercero.jpeg',
   },
   {
     grade: '4to Grado',
@@ -32,6 +36,7 @@ const grades = [
     emoji: '🌱',
     color: 'bg-pastelPink-light',
     borderColor: 'border-pastelPink',
+    image: '/Cuarto.jpeg',
   },
   {
     grade: '5to Grado',
@@ -40,6 +45,7 @@ const grades = [
     emoji: '⭐',
     color: 'bg-lavender-light',
     borderColor: 'border-lavender',
+    image: '/Quinto.jpeg',
   },
   {
     grade: '6to Grado',
@@ -48,14 +54,16 @@ const grades = [
     emoji: '🎓',
     color: 'bg-mint-light',
     borderColor: 'border-mint',
+    image: '/Sexto.jpeg',
   },
 ];
 
 export default function TimelineSection() {
   const { ref, isVisible } = useScrollAnimation();
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
-    <section className="py-12 px-4 bg-white/50">
+    <section className="py-12 px-4 bg-white/50 relative">
       <div className="max-w-4xl mx-auto">
         <div
           ref={ref}
@@ -74,18 +82,37 @@ export default function TimelineSection() {
           </p>
         </div>
 
-        {/* Timeline grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {grades.map((item, index) => (
-            <TimelineCard key={item.grade} item={item} index={index} />
+            <TimelineCard 
+              key={item.grade} 
+              item={item} 
+              index={index} 
+              onClick={() => setSelectedImage(item.image)} 
+            />
           ))}
         </div>
       </div>
+
+      {/* Modal para el Zoom */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200"
+          onClick={() => setSelectedImage(null)}
+        >
+          <img 
+            src={selectedImage} 
+            alt="Zoom" 
+            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+          />
+          <button className="absolute top-5 right-5 text-white text-4xl font-bold p-2">×</button>
+        </div>
+      )}
     </section>
   );
 }
 
-function TimelineCard({ item, index }: { item: typeof grades[0]; index: number }) {
+function TimelineCard({ item, index, onClick }: { item: typeof grades[0]; index: number; onClick: () => void }) {
   const { ref, isVisible } = useScrollAnimation(0.2);
 
   return (
@@ -94,7 +121,6 @@ function TimelineCard({ item, index }: { item: typeof grades[0]; index: number }
       className={`${item.color} border-2 ${item.borderColor} rounded-xl p-4 shadow-md relative ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} transition-all duration-700`}
       style={{ transitionDelay: `${index * 80}ms` }}
     >
-      {/* Washi tape decoration */}
       <div className="absolute -top-1.5 left-6 w-10 h-2.5 bg-pastelYellow opacity-70 rotate-[-1deg] rounded-sm" />
 
       <div className="flex items-start gap-2">
@@ -106,9 +132,15 @@ function TimelineCard({ item, index }: { item: typeof grades[0]; index: number }
         </div>
       </div>
 
-      {/* Photo placeholder */}
-      <div className="mt-3 w-full h-20 bg-white/60 rounded-lg border-2 border-dashed border-foreground/20 flex items-center justify-center">
-        <span className="text-xs text-muted-foreground font-nunito">📷 Foto de {item.grade}</span>
+      <div 
+        className="mt-3 w-full h-32 bg-white/60 rounded-lg overflow-hidden border-2 border-white shadow-inner cursor-pointer hover:opacity-80 transition-opacity"
+        onClick={onClick}
+      >
+        <img 
+          src={item.image} 
+          alt={`Foto de ${item.grade}`} 
+          className="w-full h-full object-cover" 
+        />
       </div>
     </div>
   );
