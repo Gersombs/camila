@@ -4,6 +4,7 @@ import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/camila/', // <-- ¡Agrega esta línea!
   plugins: [react()],
   resolve: {
     alias: {
