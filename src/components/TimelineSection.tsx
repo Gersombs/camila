@@ -9,7 +9,7 @@ const grades = [
     emoji: '🎒',
     color: 'bg-lavender-light',
     borderColor: 'border-lavender',
-    image: '/Primero.jpeg',
+    image: 'Primero.jpeg',
   },
   {
     grade: '2do Grado',
@@ -18,7 +18,7 @@ const grades = [
     emoji: '📚',
     color: 'bg-mint-light',
     borderColor: 'border-mint',
-    image: '/Segundo.jpeg',
+    image: 'Segundo.jpeg',
   },
   {
     grade: '3er Grado',
@@ -27,7 +27,7 @@ const grades = [
     emoji: '🎨',
     color: 'bg-pastelYellow-light',
     borderColor: 'border-pastelYellow',
-    image: '/Tercero.jpeg',
+    image: 'Tercero.jpeg',
   },
   {
     grade: '4to Grado',
@@ -36,7 +36,7 @@ const grades = [
     emoji: '🌱',
     color: 'bg-pastelPink-light',
     borderColor: 'border-pastelPink',
-    image: '/Cuarto.jpeg',
+    image: 'Cuarto.jpeg',
   },
   {
     grade: '5to Grado',
@@ -45,7 +45,7 @@ const grades = [
     emoji: '⭐',
     color: 'bg-lavender-light',
     borderColor: 'border-lavender',
-    image: '/Quinto.jpeg',
+    image: 'Quinto.jpeg',
   },
   {
     grade: '6to Grado',
@@ -54,7 +54,7 @@ const grades = [
     emoji: '🎓',
     color: 'bg-mint-light',
     borderColor: 'border-mint',
-    image: '/Sexto.jpeg',
+    image: 'Sexto.jpeg',
   },
 ];
 

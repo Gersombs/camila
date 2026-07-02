@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const photos = [
-  { id: 1, caption: 'Primer día 🎒', rotation: 'rotate-[-3deg]', image: '/Slide1.jpeg' },
-  { id: 2, caption: 'Cumpleaños 🎉', rotation: 'rotate-[2deg]', image: '/Slide2.jpeg' },
-  { id: 3, caption: 'Festival 🎈', rotation: 'rotate-[-1deg]', image: '/Slide3.jpeg' },
-  { id: 4, caption: 'Con Pimi 🐶', rotation: 'rotate-[3deg]', image: '/Slide4.jpeg' },
-  { id: 5, caption: 'Primera Comunión ✝️', rotation: 'rotate-[-2deg]', image: '/Slide5.jpeg' },
-  { id: 6, caption: 'Mi Pequeña 💝', rotation: 'rotate-[1deg]', image: '/Slide6.jpeg' },
+  { id: 1, caption: 'Primer día 🎒', rotation: 'rotate-[-3deg]', image: 'Slide1.jpeg' },
+  { id: 2, caption: 'Cumpleaños 🎉', rotation: 'rotate-[2deg]', image: 'Slide2.jpeg' },
+  { id: 3, caption: 'Festival 🎈', rotation: 'rotate-[-1deg]', image: 'Slide3.jpeg' },
+  { id: 4, caption: 'Con Pimi 🐶', rotation: 'rotate-[3deg]', image: 'Slide4.jpeg' },
+  { id: 5, caption: 'Primera Comunión ✝️', rotation: 'rotate-[-2deg]', image: 'Slide5.jpeg' },
+  { id: 6, caption: 'Mi Pequeña 💝', rotation: 'rotate-[1deg]', image: 'Slide6.jpeg' },
 ];
 
 export default function GallerySection() {

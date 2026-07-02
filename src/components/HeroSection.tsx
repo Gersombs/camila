@@ -89,7 +89,7 @@ export default function HeroSection() {
           >
             <div className="w-40 h-40 md:w-52 md:h-52 bg-gradient-to-br from-lavender-light to-mint-light rounded-sm flex items-center justify-center overflow-hidden">
               <img
-                src="/Fav.jpeg"
+                src="Fav.jpeg"
                 alt="Foto favorita"
                 className="w-full h-full object-cover"
               />
