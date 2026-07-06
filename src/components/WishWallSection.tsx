@@ -33,9 +33,27 @@ const wishes = [
   },
   {
     author: 'Adriana',
-      message: 'Felicidades Cam por este pequeño gran triunfo, te deseo siempre lo mejor de los exitos en este camino escolar. 📚⭐',
+    message: 'Felicidades Cam por este pequeño gran triunfo, te deseo siempre lo mejor de los exitos en este camino escolar. 📚⭐',
     color: 'bg-mint-light',
     rotation: 'rotate-[1deg]',
+  },
+  {
+    author: 'Tía Cari',
+    message: 'Hola mi nena, sigue esforzándote mucho, disfruta tu edad y sé feliz🥰 te quiero mucho 💗',
+    color: 'bg-pastelPink-light',
+    rotation: 'rotate-[-2deg]',
+  },
+  {
+    author: 'Tío Isra',
+    message: 'Siempre supimos que lograrías esto y más. Te mandamos un abrazo enorme y lleno de amor.❤️',
+    color: 'bg-lavender-light',
+    rotation: 'rotate-[1.5deg]',
+  },
+  {
+    author: 'Primos',
+    message: '¡Felicidades! Ahora toca celebrar en grande, estamos muy orgullosos de ti. 🥳🍰',
+    color: 'bg-pastelYellow-light',
+    rotation: 'rotate-[-1deg]',
   },
 ];
 
@@ -73,7 +91,7 @@ function WishCard({ wish, index }: { wish: typeof wishes[0]; index: number }) {
   return (
     <div
       ref={ref}
-      className={`postit ${wish.color} ${wish.rotation} rounded-sm p-4 relative ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      className={`postit ${wish.color} ${wish.rotation} rounded-sm p-4 relative ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} transition-all duration-700`}
       style={{ transitionDelay: `${index * 60}ms` }}
     >
       {/* Pin decoration */}
