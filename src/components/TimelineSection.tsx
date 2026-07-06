@@ -133,13 +133,13 @@ function TimelineCard({ item, index, onClick }: { item: typeof grades[0]; index:
       </div>
 
       <div 
-        className="mt-3 w-full h-32 bg-white/60 rounded-lg overflow-hidden border-2 border-white shadow-inner cursor-pointer hover:opacity-80 transition-opacity"
+        className="mt-4 w-full aspect-[4/3] bg-white/60 rounded-lg overflow-hidden border-2 border-white shadow-inner cursor-pointer hover:opacity-80 transition-opacity"
         onClick={onClick}
       >
         <img 
           src={item.image} 
           alt={`Foto de ${item.grade}`} 
-          className="w-full h-full object-cover" 
+          className="w-full h-full object-cover object-center" 
         />
       </div>
     </div>
