@@ -9,7 +9,7 @@ const wishes = [
   },
   {
     author: 'Papá Daniel',
-    message: 'Felicidades por este gran logro. Te quiero mucho. 🌟',
+    message: 'Te quiero mucho mi niña y me da mucha alegria ver como vas triunfando. Felicidades!. 🌟',
     color: 'bg-pastelPink-light',
     rotation: 'rotate-[1.5deg]',
   },
@@ -21,13 +21,13 @@ const wishes = [
   },
   {
     author: 'Mamá Luz',
-    message: 'Mi niña hermosa, que Dios te bendiga siempre. 🙏💕',
+    message: 'Hoy es un día especial porque logras un triunfo en la vida, vamos por el que sigue. 🙏💕',
     color: 'bg-lavender-light',
     rotation: 'rotate-[2deg]',
   },
   {
     author: 'Tía Key',
-    message: 'Que sigas brillando, mi niña. 👯‍♀️✨',
+    message: 'Cada esfuerzo cuenta, cada error es una lección y cada día es una oportunidad perfecta para reinventartey ser tu mejor versión. 👯‍♀️✨',
     color: 'bg-pastelYellow-light',
     rotation: 'rotate-[-1.5deg]',
   },
