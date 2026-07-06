@@ -33,7 +33,7 @@ const wishes = [
   },
   {
     author: 'Adriana',
-    message: 'Tienes un futuro brillante por delante. ¡Éxito! 📚⭐',
+      message: 'Felicidades Cam por este pequeño gran triunfo, te deseo siempre lo mejor de los exitos en este camino escolar. 📚⭐',
     color: 'bg-mint-light',
     rotation: 'rotate-[1deg]',
   },
